@@ -9,5 +9,9 @@ package model;
  * @author 20201PF.CC0181
  */
 public class Carta {
-    
+    private int id;
+    private String nome;
+    private int ataque;
+    private int defesa;
+    private Categoria categoria;
 }

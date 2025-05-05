@@ -10,5 +10,8 @@ package model;
  * @author 20201PF.CC0181
  */
 public class Jogador {
+    private int id;
+    private String nickname;
+    private int level;
     
 }
