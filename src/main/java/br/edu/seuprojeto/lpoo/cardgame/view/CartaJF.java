@@ -5,6 +5,7 @@
 package br.edu.seuprojeto.lpoo.cardgame.view;
 import br.edu.seuprojeto.lpoo.cardgame.control.PersistenciaJPA;
 import br.edu.seuprojeto.lpoo.cardgame.model.Carta;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,6 +49,11 @@ public class CartaJF extends javax.swing.JFrame {
         editarButton.setText("Editar");
 
         removerButton.setText("Remover");
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Cartas cadastradas");
 
@@ -104,6 +110,26 @@ public class CartaJF extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_novoButtonActionPerformed
+
+    private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
+        // TODO add your handling code here:
+        Carta cartaSel = cartasList.getSelectedValue();
+        if (cartaSel == null) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma carta para remover!");
+        } else {
+            int opSel = JOptionPane.showConfirmDialog(rootPane, "Tem certeza? ");
+            if (opSel == JOptionPane.YES_OPTION) {
+                try {
+                    if(!jpa.conexaoAberta()) {
+                        jpa = new PersistenciaJPA();
+                    }
+                    jpa.remover(cartaSel);
+                } catch (Exception e) {
+                    System.out.println("E: " + e);
+                }
+            }
+        }
+    }//GEN-LAST:event_removerButtonActionPerformed
 
     /**
      * @param args the command line arguments
