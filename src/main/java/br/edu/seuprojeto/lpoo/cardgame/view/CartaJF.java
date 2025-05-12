@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.edu.seuprojeto.lpoo.cardgame.view;
+import br.edu.seuprojeto.lpoo.cardgame.control.PersistenciaJPA;
 import br.edu.seuprojeto.lpoo.cardgame.model.Carta;
 
 /**
@@ -10,6 +11,7 @@ import br.edu.seuprojeto.lpoo.cardgame.model.Carta;
  * @author 20201PF.CC0181
  */
 public class CartaJF extends javax.swing.JFrame {
+    PersistenciaJPA jpa;
 
     /**
      * Creates new form CartaJF
@@ -37,6 +39,11 @@ public class CartaJF extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         novoButton.setText("Novo");
+        novoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                novoButtonActionPerformed(evt);
+            }
+        });
 
         editarButton.setText("Editar");
 
@@ -50,19 +57,21 @@ public class CartaJF extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
                             .addComponent(novoButton))
                         .addGap(351, 351, 351)
                         .addComponent(editarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 407, Short.MAX_VALUE)
-                        .addComponent(removerButton)))
-                .addGap(43, 43, 43))
+                        .addComponent(removerButton)
+                        .addGap(43, 43, 43))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,6 +89,20 @@ public class CartaJF extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
+        // TODO add your handling code here:
+        CadastroCartaJD telaCadastro = new CadastroCartaJD(this, true);
+        Carta novaCarta = telaCadastro.getCarta();
+        if (!jpa.conexaoAberta()) {
+            jpa = new PersistenciaJPA();
+        }
+        try {
+          jpa.persist(novaCarta);  
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_novoButtonActionPerformed
 
     /**
      * @param args the command line arguments
