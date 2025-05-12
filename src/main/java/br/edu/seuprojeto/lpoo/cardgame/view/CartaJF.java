@@ -93,6 +93,7 @@ public class CartaJF extends javax.swing.JFrame {
     private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
         // TODO add your handling code here:
         CadastroCartaJD telaCadastro = new CadastroCartaJD(this, true);
+        telaCadastro.setVisible(true);
         Carta novaCarta = telaCadastro.getCarta();
         if (!jpa.conexaoAberta()) {
             jpa = new PersistenciaJPA();
