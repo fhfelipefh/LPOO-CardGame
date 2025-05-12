@@ -81,6 +81,12 @@ public class Carta {
     public void setRaridade(int raridade) {
         this.raridade = raridade;
     }
+
+    @Override
+    public String toString() {
+        return "Carta{" + "id=" + id + ", nome=" + nome + ", ataque=" + ataque + ", defesa=" + defesa + ", categoria=" + categoria + ", raridade=" + raridade + '}';
+    }
+    
 }
 
 
