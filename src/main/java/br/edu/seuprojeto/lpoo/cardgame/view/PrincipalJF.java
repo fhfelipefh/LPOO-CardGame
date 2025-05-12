@@ -70,6 +70,7 @@ public class PrincipalJF extends javax.swing.JFrame {
 
     private void cadastroCartaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCartaMenuItemActionPerformed
         // TODO add your handling code here:
+        // Abrir o formulário de cartas
     }//GEN-LAST:event_cadastroCartaMenuItemActionPerformed
 
     /**
