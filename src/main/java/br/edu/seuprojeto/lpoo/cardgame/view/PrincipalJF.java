@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.edu.seuprojeto.lpoo.cardgame.view;
+import br.edu.seuprojeto.lpoo.cardgame.model.Carta;
+import br.edu.seuprojeto.lpoo.cardgame.view.CartaJF;
 
 /**
  *
@@ -71,6 +73,8 @@ public class PrincipalJF extends javax.swing.JFrame {
     private void cadastroCartaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCartaMenuItemActionPerformed
         // TODO add your handling code here:
         // Abrir o formulário de cartas
+        CartaJF telaCartaJF = new CartaJF();
+        telaCartaJF.show();
     }//GEN-LAST:event_cadastroCartaMenuItemActionPerformed
 
     /**
