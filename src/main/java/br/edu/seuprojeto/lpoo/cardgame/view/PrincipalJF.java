@@ -28,12 +28,22 @@ public class PrincipalJF extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        cadastroCartaMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Cadastro");
+
+        cadastroCartaMenuItem.setText("Carta");
+        cadastroCartaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroCartaMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cadastroCartaMenuItem);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Jogo");
@@ -57,6 +67,10 @@ public class PrincipalJF extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cadastroCartaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCartaMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadastroCartaMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,6 +108,7 @@ public class PrincipalJF extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem cadastroCartaMenuItem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
