@@ -69,6 +69,11 @@ public class CartaJF extends javax.swing.JFrame {
         });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +119,7 @@ public class CartaJF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        CadastroCartaJD telaCadastro = new CadastroCartaJD(this, true);
+        CadastroCartaJD telaCadastro = new CadastroCartaJD(this, true, null);
         telaCadastro.setVisible(true);
         Carta novaCarta = telaCadastro.getCarta();
 
@@ -151,6 +156,29 @@ public class CartaJF extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        Carta cartaSel = lstCartas.getSelectedValue();
+        if (cartaSel == null) {
+            JOptionPane.showMessageDialog(this, "Selecione uma carta para editar");
+            return;
+        }
+        CadastroCartaJD telaEdicao = new CadastroCartaJD(this, true, cartaSel);
+        telaEdicao.setVisible(true);
+        if (telaEdicao.getCarta() == null) {
+            return;
+        }
+        if (!jpa.conexaoAberta()) {
+            jpa = new PersistenciaJPA();
+        }
+        try {
+            jpa.atualizar(cartaSel);
+        } catch (Exception ex) {
+            System.err.println("ERRO AO ATUALIZAR CARTA: " + ex);
+        }
+        loadCards();
+    }// GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -33,10 +33,20 @@ public class CadastroCartaJD extends javax.swing.JDialog {
     }
     
     
-    public CadastroCartaJD(java.awt.Frame parent, boolean modal) {
+    public CadastroCartaJD(java.awt.Frame parent, boolean modal, Carta carta) {
         super(parent, modal);
         initComponents();
         loadCategorias();
+
+        this.carta = carta;
+
+        if (carta != null) {
+            txtNome.setText(carta.getNome());
+            cmbCategoria.setSelectedItem(carta.getCategoria());
+            txtAtaque.setText(String.valueOf(carta.getAtaque()));
+            txtDefesa.setText(String.valueOf(carta.getDefesa()));
+            lblTitulo.setText("Editar Carta");
+        }
     }
 
     /**
@@ -191,7 +201,7 @@ public class CadastroCartaJD extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroCartaJD dialog = new CadastroCartaJD(new javax.swing.JFrame(), true);
+                CadastroCartaJD dialog = new CadastroCartaJD(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

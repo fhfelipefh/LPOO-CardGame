@@ -54,6 +54,22 @@ public class PersistenciaJPA implements InterfaceBD {
         }
     }
 
+    public void atualizar(Object o) throws Exception {
+        entity = getEntityManager();
+        try {
+            entity.getTransaction().begin();
+            entity.merge(o);
+            entity.getTransaction().commit();
+        } catch (Exception e) {
+            if (entity.getTransaction().isActive()) {
+                entity.getTransaction().rollback();
+            }
+            Logger.getLogger(PersistenciaJPA.class.getName())
+                    .log(Level.SEVERE, "Erro ao atualizar: " + o.getClass().getSimpleName(), e);
+            throw e;
+        }
+    }
+
     @Override
     public void remover(Object o) throws Exception {
         entity = getEntityManager();
