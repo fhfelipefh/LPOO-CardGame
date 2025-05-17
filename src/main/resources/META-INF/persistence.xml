@@ -6,12 +6,14 @@
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/db_lpoo_card_game"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="postgres"/>
-      <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <!-- Geração do schema -->
+      <!-- Propriedades do Hibernate -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
+      <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
     </properties>
   </persistence-unit>
 </persistence>
